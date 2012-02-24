@@ -4,6 +4,7 @@ from random import random
 
 class Addition(Aufgabe):
 
+
     def __init__(self, stellen=3, anzahl=2):
         self.anzahl = anzahl
         self.stellen = stellen

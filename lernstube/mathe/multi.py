@@ -9,6 +9,8 @@ class Multiplikation(Aufgabe):
         self.anzahl = anzahl
         self.stellen = stellen
         self.zahlen = []
+        self.korrekt = 0
+        self.eingabe = None
         self.ergebnis = None
         self.generator()
 
@@ -22,15 +24,21 @@ class Multiplikation(Aufgabe):
         return "\n Wie lautet das Produkt von %s? \n" % zahlen
 
     def pruefung(self, val, test=False):
-        retval = 0
         try:
-          if self.ergebnis == int(val):
-              if not test:
-                  print "\n %s ist richtig." % val
-              retval += 1
-          else:
-              if not test:
-                  print "\n %s ist falsch. Das richtige Ergebnis lautet %s. \n" % (val, self.ergebnis)
+            self.eingabe = val
+            if self.ergebnis == int(val):
+                self.korrekt = 1
+                if not test:
+                    print "\n %s ist richtig." % val
+            else:
+                self.korrekt = 0
+                if not test:
+                    print "\n %s ist falsch. Das richtige Ergebnis lautet %s. \n" % (val, self.ergebnis)
         except:
             print "Eingabefehler"
-        return retval
+
+    def istKorrekt(self):
+        return self.korrekt
+
+    def eingabe(self):
+        return self.eingabe
